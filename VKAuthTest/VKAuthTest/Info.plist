@@ -16,16 +16,22 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+<key>LSApplicationQueriesSchemes</key> 
+<array> 
+    <string>vk</string> 
+    <string>vk-share</string> 
+    <string>vkauthorize</string> 
+</array>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.kirillzzy.VKAuthTest</string>
+			<string>https://auth.vk.com/blank.html</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>VKAuthTest</string>
+				<string>vktest</string>
 			</array>
 		</dict>
 	</array>

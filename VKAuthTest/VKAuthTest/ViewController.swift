@@ -18,15 +18,16 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    NotificationCenter.default.addObserver(self, selector: #selector(self.safariLogin(notification:)), name: Notification.Name(rawValue: kSafariViewControllerCloseNotification), object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(self.safariLogin(_:)), name: Notification.Name(rawValue: kSafariViewControllerCloseNotification), object: nil)
     // Do any additional setup after loading the view, typically from a nib.
   }
 
   func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+    
     controller.dismiss(animated: true, completion: nil)
   }
 
-  func safariLogin(notification: Notification) {
+  func safariLogin(_ notification: Notification) {
     // get the url form the auth callback
     let url = notification.object as! URL
     // then do whatever you like, for example :
@@ -39,7 +40,8 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
 
 
   @IBAction func buttonPressed(_ sender: Any) {
-    let url = URL(string: "https://oauth.vk.com/authorize?client_id=5894705&display=mobile&redirect_uri=https://oauth.vk.com/blank.html&scope=friends&response_type=token&v=5.62&state=123456")!
+    let redirect = "https://oauth.vk.com/blank.html"
+    let url = URL(string: "https://oauth.vk.com/authorize?client_id=5894705&display=popup&redirect_uri=\(redirect)&scope=friends&response_type=token&v=5.62&state=123456")!
     safariVC = SFSafariViewController(url: url, entersReaderIfAvailable: true)
     safariVC!.delegate = self
     self.present(safariVC!, animated: true, completion: nil)

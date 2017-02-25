@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VKAuthTest/ViewController.swift"
-            timestampString = "509728444.716935"
+            timestampString = "509743959.989359"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "safariLogin(notification:)"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "safariLogin(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
