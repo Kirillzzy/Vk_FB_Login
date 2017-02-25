@@ -17,7 +17,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    print(vkAppMayExists())
     NotificationCenter.default.addObserver(self, selector: #selector(self.safariLogin(_:)), name: Notification.Name(rawValue: kSafariViewControllerCloseNotification), object: nil)
     // Do any additional setup after loading the view, typically from a nib.
   }
@@ -37,13 +37,20 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
     self.safariVC!.dismiss(animated: true, completion: nil)
   }
 
+  func vkAppMayExists() -> Bool{
+    return UIApplication.shared.canOpenURL(URL(string: "vk://")!)
+  }
 
   @IBAction func buttonPressed(_ sender: Any) {
-    let url = URL(string: "https://oauth.vk.com/authorize?revoke=1&response_type=token&display=mobile&scope=photos,wall,messages,friends,email,offline,nohttps,audio&v=5.40&redirect_uri=vk5894705://authorize&sdk_version=1.4.6&client_id=5894705")!
-    safariVC = SFSafariViewController(url: url, entersReaderIfAvailable: true)
-    safariVC!.delegate = self
-    self.present(safariVC!, animated: true, completion: nil)
-
+    if !vkAppMayExists(){
+      let url = URL(string: "https://oauth.vk.com/authorize?revoke=1&response_type=token&display=mobile&scope=photos,wall,messages,friends,email,offline,nohttps,audio&v=5.40&redirect_uri=vk5894705://authorize&sdk_version=1.4.6&client_id=5894705")!
+      safariVC = SFSafariViewController(url: url, entersReaderIfAvailable: true)
+      safariVC!.delegate = self
+      self.present(safariVC!, animated: true, completion: nil)
+    } else {
+      let url = URL(string: "vkauthorize://authorize?sdk_version=1.4.6&client_id=5894705&scope=photos,wall,messages,friends,email,offline,nohttps,audio&revoke=1&v=5.40")!
+      UIApplication.shared.open(url, options: [:])
+    }
   }
 
 }

@@ -43,20 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SFSafariViewControllerDel
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
   }
 
-//  func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-//    if (sourceApplication == "com.kirillzzy.VKAuthTest") {
-//      NotificationCenter.default.post(name: NSNotification.Name(rawValue: kSafariViewControllerCloseNotification), object: url)
-//      return true
-//    }
-//    return true
-//  }
-
   func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
-
-    //        print("app: \(app)")
-    //        print("url: \(url)")
-    //        print("options: \(options)")
-
     if let sourceApplication = options[UIApplicationOpenURLOptionsKey.sourceApplication] {
       if (String(describing: sourceApplication) == "com.apple.SafariViewService") {
         NotificationCenter.default.post(name: Notification.Name(rawValue: kSafariViewControllerCloseNotification), object: url)
