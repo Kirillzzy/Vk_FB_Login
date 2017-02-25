@@ -23,7 +23,6 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
   }
 
   func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-    
     controller.dismiss(animated: true, completion: nil)
   }
 
@@ -40,8 +39,7 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
 
 
   @IBAction func buttonPressed(_ sender: Any) {
-    let redirect = "https://oauth.vk.com/blank.html"
-    let url = URL(string: "https://oauth.vk.com/authorize?client_id=5894705&display=popup&redirect_uri=\(redirect)&scope=friends&response_type=token&v=5.62&state=123456")!
+    let url = URL(string: "https://oauth.vk.com/authorize?revoke=1&response_type=token&display=mobile&scope=photos,wall,messages,friends,email,offline,nohttps,audio&v=5.40&redirect_uri=vk5894705://authorize&sdk_version=1.4.6&client_id=5894705")!
     safariVC = SFSafariViewController(url: url, entersReaderIfAvailable: true)
     safariVC!.delegate = self
     self.present(safariVC!, animated: true, completion: nil)

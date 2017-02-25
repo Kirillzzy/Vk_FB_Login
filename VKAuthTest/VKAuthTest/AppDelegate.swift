@@ -58,8 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SFSafariViewControllerDel
     //        print("options: \(options)")
 
     if let sourceApplication = options[UIApplicationOpenURLOptionsKey.sourceApplication] {
-
-      if (String(describing: sourceApplication) == "com.kirillzzy.VKAuthTest") {
+      if (String(describing: sourceApplication) == "com.apple.SafariViewService") {
         NotificationCenter.default.post(name: Notification.Name(rawValue: kSafariViewControllerCloseNotification), object: url)
         return true
       }
