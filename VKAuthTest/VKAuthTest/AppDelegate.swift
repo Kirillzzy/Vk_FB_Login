@@ -10,7 +10,7 @@ import UIKit
 import SafariServices
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, SFSafariViewControllerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
@@ -44,13 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SFSafariViewControllerDel
   }
 
   func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
-    if let sourceApplication = options[UIApplicationOpenURLOptionsKey.sourceApplication] {
-      if (String(describing: sourceApplication) == "com.apple.SafariViewService") {
-        NotificationCenter.default.post(name: Notification.Name(rawValue: kSafariViewControllerCloseNotification), object: url)
-        return true
-      }
-    }
-
+    NotificationCenter.default.post(name: Notification.Name(rawValue: kSafariViewControllerCloseNotification), object: url)
     return true
   }
 
